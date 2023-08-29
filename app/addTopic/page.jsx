@@ -2,16 +2,18 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Loader from "@/components/Loder";
 
 export default function AddTopic() {
   const [title, setTitle] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [description, setDescription] = useState("");
 
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(false)
     if (!title || !description) {
       alert("Title and description are required.");
       return;
@@ -39,6 +41,7 @@ export default function AddTopic() {
 
   return (
     <form  onSubmit={handleSubmit} className="flex flex-col gap-3">
+       {isLoading && <Loader />}
       <input
         onChange={(e) => setTitle(e.target.value)}
         value={title}
