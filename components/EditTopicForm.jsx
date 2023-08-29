@@ -33,7 +33,7 @@ export default function EditTopicForm({ id, title, description }) {
   };
 
   return (
-    <form className="flex flex-col gap-3">
+    <form onSubmit = {handleSubmit} className="flex flex-col gap-3">
       <input
         onChange={(e) => setNewTitle(e.target.value)}
         value={newTitle}
